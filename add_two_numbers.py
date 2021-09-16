@@ -9,4 +9,41 @@ class ListNode(object):
 
 
 def addTwoNumbers(l1, l2):
-    pass
+    head = None
+    node_in_chain = None
+    carry = 0
+
+    while l1 is not None or l2 is not None:
+        digit_sum = carry
+
+        if l1 is not None:
+            digit_sum += l1.val
+            l1 = l1.next
+
+        if l2 is not None:
+            digit_sum += l2.val
+            l2 = l2.next
+
+        carry = digit_sum // 10
+        node = ListNode(digit_sum % 10)
+
+        if node_in_chain is None:
+            node_in_chain = head = node
+        else:
+            node_in_chain.next = node
+            node_in_chain = node_in_chain.next
+
+    if carry:
+        node_in_chain.next = ListNode(carry)
+
+    return head
+
+
+a = ListNode(4)
+a.next = ListNode(1)
+a.next.next = ListNode(3)
+
+b = ListNode(2)
+b.next = ListNode(4)
+
+addTwoNumbers(a, b)  # outputs [6, 5, 3]
