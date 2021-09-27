@@ -6,7 +6,7 @@
 # Open brackets must be closed in the correct order.
 
 # 1 <= s.length <= 10^4
-# s consists of parentheses only '()[]{}'. ([]){}
+# s consists of parentheses only '()[]{}'.
 
 def isValid(s):
     openers = {'(', '{', '['}
@@ -30,13 +30,4 @@ def isValid(s):
     return not bool(unmatched_openers)
 
 
-print(isValid(''))
-
-
-# list = [1, 2, 3, 1]
-# dict = {'a': 'apple',
-#      'b': 'bear',
-#      'c': 'clam'}
-# set = {1, 2, 3}
-
-# print(s[1])
+print(isValid('()[]{}'))
