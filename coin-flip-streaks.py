@@ -12,7 +12,6 @@ def flip(n):
     last_value = None
     current_streak = 0
     streak_count = 0
-    seq = ''
     for _ in range(n):
         # values = {HEADS: 0, TAILS: 1}
         value = math.floor(random.random() + 0.5)
@@ -41,3 +40,5 @@ def average_sampling(m, n):
 
 
 print(average_sampling(10000, 100))
+
+# It looks like we're getting roughly 1.5 as our answser
