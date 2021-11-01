@@ -1,0 +1,51 @@
+import random
+
+
+
+iFunc = 0
+totalStreaks = 0
+
+def coinFlip():
+
+    i = 0
+    streak = 0
+    coinList = []
+
+    potentialStreak = []
+
+    while i < 100:
+        i += 1
+        coinList.append(random.randint(0, 1))
+
+    for x in coinList:
+
+        potentialStreak.append(x)
+
+        if len(potentialStreak) == 1:
+            continue
+
+        elif potentialStreak[-2] == potentialStreak[-1]:
+            continue
+
+        elif len(potentialStreak) > 6:
+            streak += 1
+            print(potentialStreak)
+            potentialStreak = [x]
+
+        else:
+            potentialStreak = [x]
+
+    return(int(streak))
+
+
+
+while iFunc < 10000:
+    streakInstance = coinFlip()
+    totalStreaks = totalStreaks + streakInstance
+
+    iFunc += 1
+
+avgStreak = totalStreaks/(10000)
+print(totalStreaks)
+print(avgStreak)
+print('xD')
