@@ -4,6 +4,7 @@
 import random
 import math
 
+print("wololol")
 
 def flip(n):
     """
