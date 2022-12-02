@@ -7,28 +7,28 @@ with open(f'{cwd}/advent-of-code/2022/1/input.txt') as f:
     lines = f.readlines()
 
 # # Part 1
-# res = 0
-# cur = 0
-# for line in lines:
-#     if line == '\n':
-#         cur = 0
-#         continue
-#     cur += int(line)
-#     res = max(res, cur)
-
-# print(res)
-
-# Part 2
-three = []
-cur = 0
+result1 = 0
+running_sum = 0
 for line in lines:
     if line == '\n':
-        if len(three) < 3:
-            hq.heappush(three, cur)
-        else:
-            hq.heappushpop(three, cur)
-        cur = 0
+        running_sum = 0
         continue
-    cur += int(line)
+    running_sum += int(line)
+    result1 = max(result1, running_sum)
 
-print(sum(three))
+print(result1)
+
+# Part 2
+top_three = []
+running_sum = 0
+for line in lines:
+    if line == '\n':
+        if len(top_three) < 3:
+            hq.heappush(top_three, running_sum)
+        else:
+            hq.heappushpop(top_three, running_sum)
+        running_sum = 0
+        continue
+    running_sum += int(line)
+
+print(sum(top_three))
