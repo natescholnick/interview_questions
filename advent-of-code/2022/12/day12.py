@@ -36,7 +36,7 @@ m, n = len(M), len(M[0])
 
 q = deque([])
 q.append((20, 72, 0))  # end coordinates from Part 1
-seen = {(0, 0)}
+seen = {(20, 72)}
 while q:
     x, y, steps = q.popleft()
     if M[x][y] == ord('a'):
