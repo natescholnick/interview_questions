@@ -1,6 +1,6 @@
-# from collections import defaultdict
-# import functools
-# import os
+from collections import defaultdict
+import functools
+import os
 
 # cwd = os.getcwd()
 
@@ -34,9 +34,6 @@
 
 
 # print(dfs('AA', (), 30))
-
-import os
-from collections import defaultdict
 
 cwd = os.getcwd()
 
