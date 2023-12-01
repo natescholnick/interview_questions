@@ -3,7 +3,7 @@ import os
 
 cwd = os.getcwd()
 
-with open(f'{cwd}/advent-of-code/2021/4/input.txt') as f:
+with open(f'{cwd}/advent-of-code/2021/04/input.txt') as f:
     lines = f.read().splitlines()
 
 draws = [int(x) for x in lines[0].split(',')]

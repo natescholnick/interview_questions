@@ -2,7 +2,7 @@ import os
 
 cwd = os.getcwd()
 
-with open(f'{cwd}/advent-of-code/2022/8/input.txt') as f:
+with open(f'{cwd}/advent-of-code/2022/08/input.txt') as f:
     lines = f.read().splitlines()
 
 trees = [[int(x) for x in line] for line in lines]

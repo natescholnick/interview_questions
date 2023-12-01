@@ -2,7 +2,7 @@ import os
 
 cwd = os.getcwd()
 
-with open(f'{cwd}/advent-of-code/2022/4/input.txt') as f:
+with open(f'{cwd}/advent-of-code/2022/04/input.txt') as f:
     lines = f.read().splitlines()
 
 # Note that I altered the input, replacing all punctuation with empty spaces

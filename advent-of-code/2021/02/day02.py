@@ -2,7 +2,7 @@ import os
 
 cwd = os.getcwd()
 
-with open(f'{cwd}/advent-of-code/2021/2/input.txt') as f:
+with open(f'{cwd}/advent-of-code/2021/02/input.txt') as f:
     lines = f.read().splitlines()
 
 # Part 1

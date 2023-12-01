@@ -2,7 +2,7 @@ import os
 
 cwd = os.getcwd()
 
-with open(f'{cwd}/advent-of-code/2021/9/input.txt') as f:
+with open(f'{cwd}/advent-of-code/2021/09/input.txt') as f:
     lines = f.read().splitlines()
 
 M = [[int(x) for x in line] for line in lines]
