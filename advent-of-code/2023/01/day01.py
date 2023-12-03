@@ -1,12 +1,11 @@
 import os
-import heapq as hq
 
 cwd = os.getcwd()
 
 with open(f'{cwd}/advent-of-code/2023/01/input.txt') as f:
     lines = f.readlines()
 
-# # Part 1
+# Part 1
 res = 0
 for line in lines:
     for c in line:
