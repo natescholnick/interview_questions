@@ -3,7 +3,7 @@ import os
 
 cwd = os.getcwd()
 
-with open(f'{cwd}/advent-of-code/2022/5/input.txt') as f:
+with open(f'{cwd}/advent-of-code/2022/05/input.txt') as f:
     lines = f.read().splitlines()
 
 # In input.txt, all lines trimmed down to relevant data separated by a single space

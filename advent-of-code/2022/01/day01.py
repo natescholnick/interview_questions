@@ -3,7 +3,7 @@ import heapq as hq
 
 cwd = os.getcwd()
 
-with open(f'{cwd}/advent-of-code/2022/1/input.txt') as f:
+with open(f'{cwd}/advent-of-code/2022/01/input.txt') as f:
     lines = f.readlines()
 
 # # Part 1
