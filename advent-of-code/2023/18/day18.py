@@ -71,3 +71,65 @@ while q:
 print(m*n - len(seen))
 
 # Part 2
+# Time for something I learned earlier this AoC: Shoelace formula!
+
+# The directions connect 1x1 squares, not points, which adds a layer of difficulty
+# All points must be pushes half units from their cell's center to its exterior corner
+# points[-1] = (0, 1) # increases area
+# points[-1] = (-1, 0) # increases area
+# Therefore, the interior is down and right from the origin
+def calcExterior(dir1, dir2, ext):
+    if dir1 in {'R', 'L'}:
+        if ext[1] > 0:
+            if dir2 == 'U':
+                ext[0] = -0.5
+            else:
+                ext[0] = 0.5
+        else:
+            if dir2 == 'U':
+                ext[0] = 0.5
+            else:
+                ext[0] = -0.5
+    if dir1 == 'L':
+        ext[0] *= -1
+    if dir1 in {'U', 'D'}:
+        if ext[0] > 0:
+            if dir2 == 'R':
+                ext[1] = -0.5
+            else:
+                ext[1] = 0.5
+        else:
+            if dir2 == 'R':
+                ext[1] = 0.5
+            else:
+                ext[1] = -0.5
+    if dir1 == 'D':
+        ext[1] *= -1
+    return ext
+
+
+points = []
+curr = [0, 0]
+out = [-0.5, 0]
+prev = {'0': 'R', '1': 'D', '2': 'L', '3': 'U'}[lines[-1].split(' ')[2][-1]]
+for line in lines:
+    _, __, code = line.split(' ')
+    dir = {'0': 'R', '1': 'D', '2': 'L', '3': 'U'}[code[-1]]
+    dist = int(code[:5], 16)
+    out = calcExterior(prev, dir, out)
+    prev = dir
+    points.append((curr[0] + out[0], curr[1] + out[1]))
+    if dir == 'L':
+        curr[0] -= dist
+    if dir == 'R':
+        curr[0] += dist
+    if dir == 'U':
+        curr[1] += dist
+    if dir == 'D':
+        curr[1] -= dist
+
+area = 0
+for i in range(len(points)):
+    area += int(points[i-1][1] + points[i][1]) * int(points[i-1][0] - points[i][0])
+
+print(abs(area) // 2)
