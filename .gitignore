@@ -2,3 +2,4 @@ test.py
 .vscode
 advent-of-code/**/input.txt
 advent-of-code/**/example*.txt
+irl_interviews/

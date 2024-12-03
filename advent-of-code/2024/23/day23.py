@@ -39,7 +39,8 @@ print(len(tris))
 cliques = set()
 
 
-# no pivot needed
+# The algorithm can be better optimized by implementing a pivot vertex to reduce the size of the search space P
+# but it performed plenty fast without and selecting a random element from a set is inefficient in Python anyhow
 def bron_kerbosch(R, P, X):
     if not P and not X:
         cliques.add(tuple(sorted(R)))
