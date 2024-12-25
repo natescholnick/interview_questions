@@ -1,4 +1,5 @@
 test.py
 .vscode
+irl_interviews/
 advent-of-code/**/input.txt
 advent-of-code/**/example*.txt
