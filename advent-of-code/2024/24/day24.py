@@ -93,5 +93,43 @@ for bit in bits:
 print(res)
 
 # Part 2
-#
-res2 = 0
+# Alright, fix the binary adder... a few things:
+# it takes 7 gates to optimally go from Xn and Yn to Zn:
+# 2 gates to calculate the value: Xn XOR Yn XOR Cn-1, where C is a carry bit
+# 5 gates to compute the carry bit: (Xn AND Yn) OR (Xn and Cn-1) OR (Yn and Cn-1)
+# the least significant bit is the exception, 2 gates:
+# z0 = x0 XOR y0, c0 = x0 AND y0
+# so optimal N-bit addition uses 7N - 5 gates
+# In this case we're looking at 45 bit addition, which means
+# 310 gates (or more, a potential added dimension of trickery)
+
+# Secondly, any output bit Zn should only be influenced by bits Xm and Ym, where m <= n
+
+# So, a good place to start will be checking for superfluous gates
+# and running dfs from z bits back to x and y bits to find any invalid paths
+# that must contain output swap(s)
+
+# Additionally, we should be able to fix the adder bit by bit
+# that is, if addition is working for numbers 31 and down,
+# then all gates involed in processing x0-x5, y0-y5 are free of swaps
+
+is_gate = False
+gates_by_output = {}
+for line in lines:
+    if len(line) == 0:
+        is_gate = True
+        continue
+    if not is_gate:
+        continue
+    eq, out = line.split(" -> ")
+    a, op, b = eq.split(" ")
+    gates_by_output[out] = (a, b)
+
+# 222 gates... how is that possible? Carry on and hopefully learn on the way!
+# print(len(gates_by_output))
+# Nah I just thought about it with paper and pen:
+# since we already have two XOR gates to determine the z bit, we reuse:
+# Given the intermediary An = Xn XOR Yn,
+# Cn = (An AND Cn-1) OR (Xn AND Yn), that is:
+# Carry a 1 if: Exactly 1 input bit AND the previous carry bit OR both input bits are 1
+# 7N - 5 becomes 5N - 3 and 5 * 45 - 3 = 222. nice :)
