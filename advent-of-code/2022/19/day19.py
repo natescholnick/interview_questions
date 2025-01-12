@@ -30,6 +30,7 @@ class Blueprint:
             costs["geo"]["ore"],
         )
         self.max_geodes = -1
+        self.cache = defaultdict(lambda: sys.maxsize)
 
     def gather(self):
         return [self.bots["ore"], self.bots["clay"], self.bots["obs"], self.bots["geo"]]
@@ -94,6 +95,9 @@ class Blueprint:
             self.inv[resource] += cost
 
     def dfs(self):
+        if self.cache[tuple(self.bots.values())] < self.time:
+            return
+        self.cache[tuple(self.bots.values())] = self.time
         # End state
         if self.time == self.duration:
             self.max_geodes = max(self.max_geodes, self.inv["geo"] + self.bots["geo"])
@@ -124,6 +128,9 @@ class Blueprint:
             self.dfs()
             self.unpocket(resources, time_left)
 
+    def set_duration(self, duration):
+        self.duration = duration
+
 
 blueprints = []
 for line in lines:
@@ -143,3 +150,13 @@ for i in range(len(blueprints)):
     res += (i + 1) * blueprints[i].max_geodes
 
 print(res)
+
+# Part 2
+res2 = 1
+for i in range(3):
+    blueprints[i].set_duration(32)
+    blueprints[i].dfs()
+    geodes = blueprints[i].max_geodes
+    res2 *= geodes
+
+print(res2)
