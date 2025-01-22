@@ -2,6 +2,8 @@ import datetime
 import os
 import argparse
 
+# ./advent-of-code/make_files.py --year=XXXX
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--year", type=str, help="The year argument", default=None)
 args = parser.parse_args()
