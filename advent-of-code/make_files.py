@@ -39,7 +39,8 @@ res = 0
 res2 = 0
 """
 
-for d in range(1, 26):
+# Starting in 2025, only 12 days :(
+for d in range(1, 13):
     day = "0" + str(d) if d < 10 else str(d)
     day_path = os.path.join(year_path, day)
     if not os.path.exists(day_path):
